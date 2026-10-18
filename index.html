@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>RJ Nexus - Next-Gen AI-Powered CMS</title>
+
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
             --bg-color: #020617;
@@ -26,30 +28,38 @@
             padding: 0;
         }
 
+        html {
+            background: var(--bg-color);
+            color-scheme: dark;
+        }
+
         body {
             background: radial-gradient(circle at center, #0f172a 0%, var(--bg-color) 100%);
+            background-attachment: fixed;
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow-x: hidden;
             position: relative;
+            isolation: isolate;
         }
 
         /* Glowing Backgrounds */
         .orb {
-            position: absolute;
+            position: fixed;
             width: 400px;
             height: 400px;
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.15;
             z-index: -1;
+            pointer-events: none;
             animation: pulse-glow 8s infinite ease-in-out;
         }
-        .orb-1 { top: 10%; left: 10%; bg-color: var(--purple); background: var(--purple); }
+        .orb-1 { top: 10%; left: 10%; background: var(--purple); }
         .orb-2 { bottom: 10%; right: 10%; background: var(--blue); animation-delay: -4s; }
 
         @keyframes pulse-glow {
@@ -58,7 +68,7 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
@@ -72,7 +82,7 @@
 
         /* Header */
         header {
-            padding: 24px 0;
+            padding: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -94,16 +104,16 @@
             box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
         }
 
-        .logo-icon i { color: white; font-size: 18px; }
+        .logo-icon i { color: #fff; font-size: 18px; }
         .logo-text { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
         .logo-text span { color: #60a5fa; font-weight: 500; }
 
         .btn-github {
             background: rgba(30, 41, 59, 0.8);
-            border: 1px border var(--border-color);
+            border: 1px solid var(--border-color);
             padding: 8px 16px;
             border-radius: 8px;
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -111,14 +121,15 @@
             align-items: center;
             gap: 8px;
             transition: 0.3s;
-            border: 1px solid var(--border-color);
         }
         .btn-github:hover { background: #334155; border-color: #475569; }
 
         /* Main Content */
-        main {
+        .hero {
+            width: 100%;
             max-width: 800px;
             margin: 60px auto;
+            padding: 0 24px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -145,13 +156,15 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 24px;
-            letter-tight: -1px;
+            letter-spacing: -1px;
         }
 
         .gradient-text {
             background: linear-gradient(to right, #60a5fa, #818cf8, #c084fc);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         .desc {
@@ -161,6 +174,7 @@
             margin-bottom: 48px;
             font-weight: 300;
         }
+        .desc strong { color: var(--text-main); font-weight: 700; }
 
         /* Grid */
         .grid {
@@ -171,16 +185,12 @@
             margin-bottom: 48px;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 32px; }
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 20px;
             border-radius: 16px;
+            -webkit-backdrop-filter: blur(4px);
             backdrop-filter: blur(4px);
             transition: 0.3s;
         }
@@ -201,7 +211,7 @@
             border: 1px solid var(--border-color);
             padding: 24px;
             border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
         .progress-header {
@@ -229,7 +239,7 @@
 
         /* Footer */
         footer {
-            padding: 24px 0;
+            padding: 24px;
             border-top: 1px solid #0f172a;
             display: flex;
             justify-content: space-between;
@@ -237,12 +247,18 @@
             font-size: 12px;
             color: #64748b;
         }
+        .footer-links { display: flex; gap: 16px; }
+        .footer-links a { color: #64748b; text-decoration: none; transition: 0.3s; font-size: 16px; }
+        .footer-links a:hover { color: var(--text-main); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 640px) {
             footer { flex-direction: column; gap: 16px; text-align: center; }
         }
-        .footer-links { display: flex; gap: 16px; }
-        .footer-links a { color: #64748b; transition: 0.3s; font-size: 16px; }
-        .footer-links a:hover { color: var(--text-main); }
     </style>
 </head>
 <body>
@@ -257,13 +273,13 @@
             </div>
             <div class="logo-text">RJ <span>NEXUS</span></div>
         </div>
-        <a href="https://github.com" target="_blank" class="btn-github">
+        <a href="https://github.com/mr-ruhid/rj-nexus" target="_blank" rel="noopener" class="btn-github">
             <i class="fa-brands fa-github"></i>
             <span>Source Code</span>
         </a>
     </header>
 
-    <main class="container">
+    <main class="hero">
         <div class="badge">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>REDEFINING WEB DEVELOPMENT WITH AI</span>
@@ -306,8 +322,8 @@
     <footer class="container">
         <div>&copy; 2026 RJ Nexus. Built with passion for the open-source community.</div>
         <div class="footer-links">
-            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <a href="https://github.com/mr-ruhid/rj-nexus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
         </div>
     </footer>
 
