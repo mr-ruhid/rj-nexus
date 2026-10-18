@@ -91,22 +91,13 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
-        .logo-icon {
-            background: linear-gradient(135deg, var(--purple), var(--blue));
-            padding: 10px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+        .logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
         }
-
-        .logo-icon i { color: #fff; font-size: 18px; }
-        .logo-text { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
-        .logo-text span { color: #60a5fa; font-weight: 500; }
 
         .btn-github {
             background: rgba(30, 41, 59, 0.8);
@@ -267,13 +258,10 @@
     <div class="orb orb-2"></div>
 
     <header class="container">
-        <div class="logo-area">
-            <div class="logo-icon">
-                <i class="fa-solid fa-layer-group"></i>
-            </div>
-            <div class="logo-text">RJ <span>NEXUS</span></div>
-        </div>
-        <a href="https://github.com/mr-ruhid/rj-nexus" target="_blank" rel="noopener" class="btn-github">
+        <a href="./" class="logo-area" aria-label="RJ Nexus">
+            <img src="assets/logo-white.svg" alt="RJ Nexus" class="logo-img">
+        </a>
+        <a href="https://github.com/mr-ruhid/rj-cms-ai" target="_blank" rel="noopener" class="btn-github">
             <i class="fa-brands fa-github"></i>
             <span>Source Code</span>
         </a>
@@ -322,7 +310,7 @@
     <footer class="container">
         <div>&copy; 2026 RJ Nexus. Built with passion for the open-source community.</div>
         <div class="footer-links">
-            <a href="https://github.com/mr-ruhid/rj-nexus" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://github.com/mr-ruhid/rj-cms-ai" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             <a href="#" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
         </div>
     </footer>
