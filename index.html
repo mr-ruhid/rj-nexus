@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ Nexus - Next-Gen AI-Powered CMS</title>
+    <!-- Tailwind CSS -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); filter: blur(50px); }
+            50% { opacity: 0.9; transform: scale(1.2); filter: blur(70px); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .glow-bg {
+            animation: pulse-glow 8s infinite ease-in-out;
+        }
+        .float-element {
+            animation: float 4s infinite ease-in-out;
+        }
+        .bg-space {
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        }
+    </style>
+</head>
+<body class="bg-space text-slate-200 min-h-screen flex flex-col justify-between overflow-x-hidden font-sans relative">
+
+    <!-- Glowing Background Orbs -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full glow-bg -z-10"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full glow-bg -z-10" style="animation-delay: -4s;"></div>
+
+    <!-- Header / Logo -->
+    <header class="container mx-auto px-6 py-6 flex justify-between items-center z-10">
+        <div class="flex items-center space-x-3 select-none">
+            <div class="bg-gradient-to-tr from-purple-600 to-blue-500 p-2.5 rounded-xl shadow-lg shadow-purple-500/30">
+                <i class="fa-solid fa-layer-group text-xl text-white"></i>
+            </div>
+            <span class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                RJ <span class="text-blue-400 font-medium">NEXUS</span>
+            </span>
+        </div>
+        <div>
+            <a href="https://github.com" target="_blank" class="text-sm font-semibold bg-slate-800/80 hover:bg-slate-700 border border-slate-700/50 hover:border-slate-600 px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2">
+                <i class="fa-brands fa-github text-base"></i>
+                <span>Source Code</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 flex-grow flex flex-col justify-center items-center text-center z-10 max-w-4xl my-12">
+        
+        <!-- Badge -->
+        <div class="float-element mb-6 inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/30 px-4 py-1.5 rounded-full text-xs font-medium text-purple-300 tracking-wide">
+            <i class="fa-solid fa-wand-magic-sparkles text-purple-400 animate-pulse"></i>
+            <span>REDEFINING WEB DEVELOPMENT WITH AI</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
+            The Next Generation <br class="hidden md:inline">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+                Open-Source CMS
+            </span>
+        </h1>
+
+        <!-- Short Description -->
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
+            Forget bloated plugins. Say hello to <strong class="text-slate-200 font-semibold">RJ Nexus</strong>—featuring a native page builder, built-in AI assistant, autonomous SEO, and core multi-language localization.
+        </p>
+
+        <!-- Core Features Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl mb-12">
+            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-blue-500/40 transition-all group">
+                <i class="fa-solid fa-cubes text-xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-sm font-semibold text-slate-200">Native Builder</h3>
+            </div>
+            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-purple-500/40 transition-all group">
+                <i class="fa-solid fa-robot text-xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-sm font-semibold text-slate-200">AI Managed</h3>
+            </div>
+            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-emerald-500/40 transition-all group">
+                <i class="fa-solid fa-magnifying-glass-chart text-xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-sm font-semibold text-slate-200">Built-in SEO</h3>
+            </div>
+            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-amber-500/40 transition-all group">
+                <i class="fa-solid fa-language text-xl text-amber-400 mb-2 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-sm font-semibold text-slate-200">Multi-Language</h3>
+            </div>
+        </div>
+
+        <!-- Progress bar or Coming Soon Status -->
+        <div class="w-full max-w-md bg-slate-900/80 border border-slate-800 p-6 rounded-2xl shadow-xl backdrop-blur-md">
+            <div class="flex justify-between items-center mb-2 text-sm">
+                <span class="text-slate-400 font-medium">Development Progress</span>
+                <span class="text-blue-400 font-bold">Deploying Soon</span>
+            </div>
+            <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full animate-pulse" style="width: 75%"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-6 py-6 text-center text-xs text-slate-500 border-t border-slate-900 z-10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+            &copy; 2026 RJ Nexus. Built with passion for the open-source community.
+        </div>
+        <div class="flex space-x-4">
+            <a href="https://github.com" target="_blank" class="hover:text-slate-300 transition-colors">
+                <i class="fa-brands fa-github text-base"></i>
+            </a>
+            <a href="#" class="hover:text-slate-300 transition-colors">
+                <i class="fa-solid fa-globe text-base"></i>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
