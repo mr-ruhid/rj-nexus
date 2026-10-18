@@ -4,122 +4,310 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RJ Nexus - Next-Gen AI-Powered CMS</title>
-    <!-- Tailwind CSS -->
-    <script src="https://tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.6; transform: scale(1); filter: blur(50px); }
-            50% { opacity: 0.9; transform: scale(1.2); filter: blur(70px); }
+        :root {
+            --bg-color: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border-color: rgba(51, 65, 85, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --purple: #a855f7;
+            --blue: #3b82f6;
+            --emerald: #10b981;
+            --amber: #f59e0b;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #0f172a 0%, var(--bg-color) 100%);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Glowing Backgrounds */
+        .orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: pulse-glow 8s infinite ease-in-out;
+        }
+        .orb-1 { top: 10%; left: 10%; bg-color: var(--purple); background: var(--purple); }
+        .orb-2 { bottom: 10%; right: 10%; background: var(--blue); animation-delay: -4s; }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.2); opacity: 0.25; }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
-        .glow-bg {
-            animation: pulse-glow 8s infinite ease-in-out;
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        .float-element {
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            padding: 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+        }
+
+        .logo-icon i { color: white; font-size: 18px; }
+        .logo-text { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
+        .logo-text span { color: #60a5fa; font-weight: 500; }
+
+        .btn-github {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px border var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        .btn-github:hover { background: #334155; border-color: #475569; }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 60px auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge {
             animation: float 4s infinite ease-in-out;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #d8b4fe;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
         }
-        .bg-space {
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-tight: -1px;
         }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+        }
+        .card:hover { border-color: rgba(59, 130, 246, 0.5); transform: translateY(-2px); }
+        .card i { font-size: 20px; margin-bottom: 8px; display: block; }
+        .card h3 { font-size: 14px; font-weight: 600; color: var(--text-main); }
+
+        .card-1 i { color: var(--blue); }
+        .card-2 i { color: var(--purple); }
+        .card-3 i { color: var(--emerald); }
+        .card-4 i { color: var(--amber); }
+
+        /* Progress Card */
+        .progress-box {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .progress-title { color: var(--text-muted); font-weight: 500; }
+        .progress-status { color: var(--blue); font-weight: 700; }
+
+        .progress-bar-bg {
+            width: 100%;
+            background: #1e293b;
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background: linear-gradient(to right, var(--blue), var(--purple));
+            height: 100%;
+            width: 75%;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 24px 0;
+            border-top: 1px solid #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+        @media (max-width: 640px) {
+            footer { flex-direction: column; gap: 16px; text-align: center; }
+        }
+        .footer-links { display: flex; gap: 16px; }
+        .footer-links a { color: #64748b; transition: 0.3s; font-size: 16px; }
+        .footer-links a:hover { color: var(--text-main); }
     </style>
 </head>
-<body class="bg-space text-slate-200 min-h-screen flex flex-col justify-between overflow-x-hidden font-sans relative">
+<body>
 
-    <!-- Glowing Background Orbs -->
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full glow-bg -z-10"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full glow-bg -z-10" style="animation-delay: -4s;"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-    <!-- Header / Logo -->
-    <header class="container mx-auto px-6 py-6 flex justify-between items-center z-10">
-        <div class="flex items-center space-x-3 select-none">
-            <div class="bg-gradient-to-tr from-purple-600 to-blue-500 p-2.5 rounded-xl shadow-lg shadow-purple-500/30">
-                <i class="fa-solid fa-layer-group text-xl text-white"></i>
+    <header class="container">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fa-solid fa-layer-group"></i>
             </div>
-            <span class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
-                RJ <span class="text-blue-400 font-medium">NEXUS</span>
-            </span>
+            <div class="logo-text">RJ <span>NEXUS</span></div>
         </div>
-        <div>
-            <a href="https://github.com" target="_blank" class="text-sm font-semibold bg-slate-800/80 hover:bg-slate-700 border border-slate-700/50 hover:border-slate-600 px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2">
-                <i class="fa-brands fa-github text-base"></i>
-                <span>Source Code</span>
-            </a>
-        </div>
+        <a href="https://github.com" target="_blank" class="btn-github">
+            <i class="fa-brands fa-github"></i>
+            <span>Source Code</span>
+        </a>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 flex-grow flex flex-col justify-center items-center text-center z-10 max-w-4xl my-12">
-        
-        <!-- Badge -->
-        <div class="float-element mb-6 inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-500/30 px-4 py-1.5 rounded-full text-xs font-medium text-purple-300 tracking-wide">
-            <i class="fa-solid fa-wand-magic-sparkles text-purple-400 animate-pulse"></i>
+    <main class="container">
+        <div class="badge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>REDEFINING WEB DEVELOPMENT WITH AI</span>
         </div>
 
-        <!-- Main Heading -->
-        <h1 class="text-4xl md:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
-            The Next Generation <br class="hidden md:inline">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
-                Open-Source CMS
-            </span>
-        </h1>
+        <h1>The Next Generation<br><span class="gradient-text">Open-Source CMS</span></h1>
 
-        <!-- Short Description -->
-        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
-            Forget bloated plugins. Say hello to <strong class="text-slate-200 font-semibold">RJ Nexus</strong>—featuring a native page builder, built-in AI assistant, autonomous SEO, and core multi-language localization.
-        </p>
+        <p class="desc">Forget bloated plugins. Say hello to <strong>RJ Nexus</strong>—featuring a native page builder, built-in AI assistant, autonomous SEO, and core multi-language localization.</p>
 
-        <!-- Core Features Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-3xl mb-12">
-            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-blue-500/40 transition-all group">
-                <i class="fa-solid fa-cubes text-xl text-blue-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-sm font-semibold text-slate-200">Native Builder</h3>
+        <div class="grid">
+            <div class="card card-1">
+                <i class="fa-solid fa-cubes"></i>
+                <h3>Native Builder</h3>
             </div>
-            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-purple-500/40 transition-all group">
-                <i class="fa-solid fa-robot text-xl text-purple-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-sm font-semibold text-slate-200">AI Managed</h3>
+            <div class="card card-2">
+                <i class="fa-solid fa-robot"></i>
+                <h3>AI Managed</h3>
             </div>
-            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-emerald-500/40 transition-all group">
-                <i class="fa-solid fa-magnifying-glass-chart text-xl text-emerald-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-sm font-semibold text-slate-200">Built-in SEO</h3>
+            <div class="card card-3">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h3>Built-in SEO</h3>
             </div>
-            <div class="p-4 bg-slate-900/40 border border-slate-800/80 rounded-xl backdrop-blur-sm hover:border-amber-500/40 transition-all group">
-                <i class="fa-solid fa-language text-xl text-amber-400 mb-2 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-sm font-semibold text-slate-200">Multi-Language</h3>
+            <div class="card card-4">
+                <i class="fa-solid fa-language"></i>
+                <h3>Multi-Language</h3>
             </div>
         </div>
 
-        <!-- Progress bar or Coming Soon Status -->
-        <div class="w-full max-w-md bg-slate-900/80 border border-slate-800 p-6 rounded-2xl shadow-xl backdrop-blur-md">
-            <div class="flex justify-between items-center mb-2 text-sm">
-                <span class="text-slate-400 font-medium">Development Progress</span>
-                <span class="text-blue-400 font-bold">Deploying Soon</span>
+        <div class="progress-box">
+            <div class="progress-header">
+                <span class="progress-title">Development Progress</span>
+                <span class="progress-status">Deploying Soon</span>
             </div>
-            <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full animate-pulse" style="width: 75%"></div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill"></div>
             </div>
         </div>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="container mx-auto px-6 py-6 text-center text-xs text-slate-500 border-t border-slate-900 z-10 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-            &copy; 2026 RJ Nexus. Built with passion for the open-source community.
-        </div>
-        <div class="flex space-x-4">
-            <a href="https://github.com" target="_blank" class="hover:text-slate-300 transition-colors">
-                <i class="fa-brands fa-github text-base"></i>
-            </a>
-            <a href="#" class="hover:text-slate-300 transition-colors">
-                <i class="fa-solid fa-globe text-base"></i>
-            </a>
+    <footer class="container">
+        <div>&copy; 2026 RJ Nexus. Built with passion for the open-source community.</div>
+        <div class="footer-links">
+            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-solid fa-globe"></i></a>
         </div>
     </footer>
 
